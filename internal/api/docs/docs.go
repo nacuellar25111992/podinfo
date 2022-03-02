@@ -368,29 +368,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/status/{code}": {
-            "get": {
-                "description": "sets the response status code to the specified code",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "HTTP API"
-                ],
-                "summary": "Status code",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/api.MapResponse"
-                        }
-                    }
-                }
-            }
-        },
         "/store": {
             "post": {
                 "description": "writes the posted content to disk at /data/hash and returns the SHA1 hash of the content",
@@ -502,29 +479,6 @@ const docTemplate = `{
                 "responses": {
                     "200": {
                         "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/api.MapResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/ws/echo": {
-            "post": {
-                "description": "echos content via websockets",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "HTTP API"
-                ],
-                "summary": "Echo over websockets",
-                "responses": {
-                    "202": {
-                        "description": "Accepted",
                         "schema": {
                             "$ref": "#/definitions/api.MapResponse"
                         }

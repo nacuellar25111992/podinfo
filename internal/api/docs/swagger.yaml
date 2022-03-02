@@ -283,21 +283,6 @@ paths:
       summary: Enable ready state
       tags:
       - Kubernetes
-  /status/{code}:
-    get:
-      consumes:
-      - application/json
-      description: sets the response status code to the specified code
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/api.MapResponse'
-      summary: Status code
-      tags:
-      - HTTP API
   /store:
     post:
       consumes:
@@ -374,21 +359,6 @@ paths:
           schema:
             $ref: '#/definitions/api.MapResponse'
       summary: Version
-      tags:
-      - HTTP API
-  /ws/echo:
-    post:
-      consumes:
-      - application/json
-      description: echos content via websockets
-      produces:
-      - application/json
-      responses:
-        "202":
-          description: Accepted
-          schema:
-            $ref: '#/definitions/api.MapResponse'
-      summary: Echo over websockets
       tags:
       - HTTP API
 schemes:
