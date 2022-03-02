@@ -65,7 +65,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish config artifact
         run: |
-          cd kustomize
+          cd infrastructure/kustomize
           tar -cf config.tar * --numeric-owner --owner=0 --group=0
           crane append -f config.tar -t ghcr.io/nacuellar25111992/podinfo-deploy:${{ steps.prep.outputs.VERSION }}
           crane tag ghcr.io/nacuellar25111992/podinfo-deploy:${{ steps.prep.outputs.VERSION }} latest
