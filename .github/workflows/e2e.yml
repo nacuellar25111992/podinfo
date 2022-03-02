@@ -22,16 +22,16 @@ jobs:
           version: v0.11.1
       - name: Build container image
         run: |
-          ./test/build.sh
-          kind load docker-image test/podinfo:latest
+          ./tests/build.sh
+          kind load docker-image tests/podinfo:latest
       - name: Setup Helm
         uses: ./.github/actions/helm
         with:
           version: ${{ matrix.helm-version }}
       - name: Deploy
-        run: ./test/deploy.sh
+        run: ./tests/deploy.sh
       - name: Run integration tests
-        run: ./test/test.sh
+        run: ./tests/test.sh
       - name: Debug failure
         if: failure()
         run: |
