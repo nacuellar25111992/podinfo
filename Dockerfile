@@ -1,4 +1,4 @@
-FROM golang:1.16-alpine as builder
+FROM golang:1.17-alpine as builder
 
 ARG REVISION
 
@@ -11,12 +11,8 @@ COPY . .
 RUN go mod download
 
 RUN CGO_ENABLED=0 go build -ldflags "-s -w \
-    -X github.com/stefanprodan/podinfo/pkg/version.REVISION=${REVISION}" \
+    -X github.com/nacuellar25111992/podinfo/internal/version.REVISION=${REVISION}" \
     -a -o bin/podinfo cmd/podinfo/*
-
-RUN CGO_ENABLED=0 go build -ldflags "-s -w \
-    -X github.com/stefanprodan/podinfo/pkg/version.REVISION=${REVISION}" \
-    -a -o bin/podcli cmd/podcli/*
 
 FROM alpine:3.14
 
@@ -24,7 +20,7 @@ ARG BUILD_DATE
 ARG VERSION
 ARG REVISION
 
-LABEL maintainer="stefanprodan"
+LABEL maintainer="nacuellar25111992"
 
 RUN addgroup -S app \
     && adduser -S -G app app \
@@ -34,7 +30,6 @@ RUN addgroup -S app \
 WORKDIR /home/app
 
 COPY --from=builder /podinfo/bin/podinfo .
-COPY --from=builder /podinfo/bin/podcli /usr/local/bin/podcli
 COPY ./ui ./ui
 RUN chown -R app:app ./
 
