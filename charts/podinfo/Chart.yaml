@@ -10,4 +10,4 @@ maintainers:
   name: nacuellar25111992
 sources:
 - https://github.com/nacuellar25111992/podinfo
-kubeVersion: ">=1.23.0-0"
+kubeVersion: ">=1.20.0-0"
