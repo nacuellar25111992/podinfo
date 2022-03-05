@@ -1,6 +1,6 @@
 name: Setup Helm CLI
 description: A GitHub Action for running Helm commands
-author: Stefan Prodan
+author: Nicolás Cuellar
 branding:
   color: blue
   icon: command

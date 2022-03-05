@@ -1,6 +1,6 @@
 name: 'github-release-notes'
 description: 'A GitHub Action to run github-release-notes commands'
-author: 'Stefan Prodan'
+author: 'Nicolás Cuellar'
 branding:
   icon: 'command'
   color: 'blue'
