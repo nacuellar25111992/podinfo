@@ -20,3 +20,6 @@ build/
 gcloud/
 dist/
 bin/
+
+# k8s Kind
+podinfo*.tgz

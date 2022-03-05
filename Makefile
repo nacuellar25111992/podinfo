@@ -6,6 +6,7 @@ TAG?=latest
 NAME:=podinfo
 DOCKER_REPOSITORY:=nacuellar25111992
 DOCKER_IMAGE_NAME:=$(DOCKER_REPOSITORY)/$(NAME)
+DOCKER_IMAGE_PLATFORM:=linux/amd64
 GIT_COMMIT:=$(shell git describe --dirty --always)
 VERSION:=$(shell grep 'VERSION' internal/version/version.go | awk '{ print $$4 }' | tr -d '"')
 EXTRA_RUN_ARGS?=
@@ -36,7 +37,7 @@ build-container:
 
 build-xx:
 	docker buildx build \
-	--platform=linux/amd64 \
+	--platform=$(DOCKER_IMAGE_PLATFORM) \
 	-t $(DOCKER_IMAGE_NAME):$(VERSION) \
 	--load \
 	-f Dockerfile.xx .
@@ -52,6 +53,9 @@ push-container:
 	docker tag $(DOCKER_IMAGE_NAME):$(VERSION) $(DOCKER_IMAGE_NAME):latest
 	docker push $(DOCKER_IMAGE_NAME):$(VERSION)
 	docker push $(DOCKER_IMAGE_NAME):latest
+
+scan-container:
+	docker scan $(DOCKER_IMAGE_NAME):$(VERSION)
 
 version-set:
 	@next="$(TAG)" && \
