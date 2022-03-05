@@ -42,6 +42,12 @@ build-xx:
 	--load \
 	-f Dockerfile.xx .
 
+build-base:
+	docker build -f Dockerfile.base -t $(DOCKER_REPOSITORY)/$(NAME)-base:latest .
+
+push-base: build-base
+	docker push $(DOCKER_REPOSITORY)/$(NAME)-base:latest
+
 test-container:
 	@docker rm -f podinfo || true
 	@docker run -dp 9898:9898 --name=podinfo $(DOCKER_IMAGE_NAME):$(VERSION)
